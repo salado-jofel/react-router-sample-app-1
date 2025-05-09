@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { getUsers } from "../../../_services/contacts-service";
+import { useSelector } from "react-redux";
 
 
 export default function Providers({ children }) {
+  const state = useSelector((state) => state.contactsSlice);
 useEffect(() => {
   const fetchData = async () => {
     try {

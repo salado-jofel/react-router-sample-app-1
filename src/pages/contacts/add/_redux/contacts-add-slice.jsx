@@ -5,20 +5,38 @@ export const contactsAddSlice = createSlice({
   name: "contactsAddSlice",
   initialState: contactsAddState,
   reducers: {
-    contactsAddButtonPressed: (state) => {
-      state.quantity = state.quantity + 1;
-      console.log("ADD button pressed redux: ", state.quantity);
+    contactNameChanged: (state, action) => {
+      return {
+        ...state,
+        contactName: action.payload,
+      };
     },
-    contactsRemoveButtonPressed: (state) => {
-      if (state.quantity > 0) {
-        state.quantity = state.quantity - 1;
-        console.log("REMOVE button pressed redux: ", state.quantity);
-      }
+    contactEmailChanged: (state, action) => {
+      return {
+        ...state,
+        contactEmail: action.payload,
+      };
+    },
+    contactPhoneChanged: (state, action) => {
+      return {
+        ...state,
+        contactPhone: action.payload,
+      };
+    },
+    contactAddressChanged: (state, action) => {
+      return {
+        ...state,
+        contactAddress: action.payload,
+      };
     },
   },
 });
 
-export const { contactsAddButtonPressed, contactsRemoveButtonPressed } =
-  contactsAddSlice.actions;
+export const {
+  contactNameChanged,
+  contactAddressChanged,
+  contactEmailChanged,
+  contactPhoneChanged,
+} = contactsAddSlice.actions;
 
 export default contactsAddSlice.reducer;

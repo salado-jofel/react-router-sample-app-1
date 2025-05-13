@@ -1,5 +1,8 @@
 const contactsAddState = {
-  quantity: 0,
+  contactName: "",
+  contactEmail: "",
+  contactPhone: "",
+  contactAddress: "",
 };
 
 export default contactsAddState;

@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { indexContactAction } from "../../../_actions/contacts-actions";
+import { contactsLoaded } from "../_redux/contacts-slice";
 
 export default function Providers({ children }) {
-  //   const state = useSelector((state) => state.contactsSlice);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const fetchUsers = await getUsers();
-  //       console.log("Fetched users:", fetchUsers);
-  //     } catch (error) {
-  //       console.error("Error fetching users from actions:", error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function indexContacts() {
+      var contacts = await indexContactAction();
+      dispatch(contactsLoaded(contacts));
+    }
+    indexContacts();
+  }, []);
+
   return <>{children}</>;
 }

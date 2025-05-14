@@ -14,7 +14,7 @@ export default function AddForm() {
   const state = useSelector((state) => state.contactsAddSlice);
   const dispatch = useDispatch();
 
-  async function handleOnSubmit(e) {
+  function handleOnSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const contactName = formData.get("contactName");

@@ -6,7 +6,7 @@ export const contactsSlice = createSlice({
   initialState: contactsState,
   reducers: {
     contactsLoaded: (state, actions) => {
-      console.log("contactsLoaded redux: ", actions.payload);
+      return { ...state, contacts: actions.payload };
     },
   },
 });

@@ -11,3 +11,13 @@ export async function storeContactService(body) {
   });
   return response;
 }
+
+export async function indexContactService() {
+  var response = await fetch(`${baseUrl}/contacts.json`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return response;
+}

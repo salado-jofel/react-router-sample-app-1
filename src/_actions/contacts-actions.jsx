@@ -1,4 +1,7 @@
-import { storeContactService } from "../_services/contacts-services";
+import {
+  indexContactService,
+  storeContactService,
+} from "../_services/contacts-services";
 
 export async function storeContactAction(
   contactName,
@@ -8,21 +11,40 @@ export async function storeContactAction(
 ) {
   try {
     var response = await storeContactService({
-      contact_name: contactName,
-      contact_email: contactEmail,
-      contact_phone: contactPhone,
-      contact_address: contactAddress,
+      data: {
+        id: Date.now(),
+        contact_name: contactName,
+        contact_email: contactEmail,
+        contact_phone: contactPhone,
+        contact_address: contactAddress,
+      },
     });
 
     if (response.ok) {
       var contacts = await response.json();
-      console.log("Success:", contacts);
+      console.log("Success store:", contacts);
       return contacts;
     } else {
-      console.error("Error response:", response);
+      console.error("Error store response:", response);
       throw new Error("Failed to store contact");
     }
   } catch (error) {
     console.error("Error:", error);
+  }
+}
+
+export async function indexContactAction() {
+  try {
+    var response = await indexContactService();
+    if (response.ok) {
+      var contacts = await response.json();
+      console.log("Success index:", contacts);
+      return contacts;
+    } else {
+      console.error("Error index response:", response);
+      throw new Error("Failed to fetch contacts");
+    }
+  } catch (error) {
+    console.error("Error index: ", error);
   }
 }

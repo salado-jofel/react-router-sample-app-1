@@ -1,5 +1,5 @@
 const contactsState = {
-  contacts: [],
+  contacts: {},
 };
 
 export default contactsState;

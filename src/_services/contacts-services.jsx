@@ -1,8 +1,8 @@
-const baseUrl =
-  "https://contacts-backend-53f3a-default-rtdb.asia-southeast1.firebasedatabase.app/";
+const baseUrl = "http://localhost:3000";
 
 export async function storeContactService(body) {
-  var response = await fetch(`${baseUrl}/contacts.json`, {
+  console.log("body contact: ", body);
+  var response = await fetch(`${baseUrl}/contacts`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,7 +13,7 @@ export async function storeContactService(body) {
 }
 
 export async function indexContactService() {
-  var response = await fetch(`${baseUrl}/contacts.json`, {
+  var response = await fetch(`${baseUrl}/contacts`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
